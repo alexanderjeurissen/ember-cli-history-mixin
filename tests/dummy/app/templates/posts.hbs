@@ -1,0 +1,12 @@
+<div id="posts">
+  <h1>Recent Posts</h1>
+  <ul>
+    {{#each post in model}}
+      <li>
+        {{#link-to 'post' post}}
+          {{post.title}} <small class="muted">by {{post.author}}</small>
+        {{/link-to}}
+      </li>
+    {{/each}}
+  </ul>
+</div>
