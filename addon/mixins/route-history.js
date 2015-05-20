@@ -54,21 +54,18 @@ export default Ember.Mixin.create({
       });
   },
 
+  saveActiveRoute: function (destination) {
+    if (!this.get('isUntrackedRoute') && this.get(destination)) {
+      this.get(destination).pushObject(this.get('activeRoute'));
+    }
+  },
+
   prepareTransition: function (direction) {
     this.set('isTransitioning', true);
-
-    switch (direction) {
-    case 'BACK':
-      if (!this.get('isUntrackedRoute')) {
-        this.get('forwardRoutes').pushObject(this.get('activeRoute'));
-      }
-      break;
-
-    case 'FORWARD':
-      if (!this.get('isUntrackedRoute') && this.get) {
-        this.get('backRoutes').pushObject(this.get('activeRoute'));
-      }
-      break;
+    if (direction === 'BACK') {
+      this.saveActiveRoute('forwardRoutes');
+    } else if (direction === 'FORWARD') {
+      this.saveActiveRoute('backRoutes');
     }
   },
 
