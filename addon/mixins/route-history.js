@@ -84,9 +84,9 @@ export default Ember.Mixin.create({
       if (Ember.isPresent(this.get('currentTransition'))) {
         this.set('currentPath', this.get('currentTransition'));
       } else {
-        Ember.run.later(this, function () {
+        Ember.run.scheduleOnce('routerTransitions', this, function () {
           this.set('currentPath', this.get('controller.currentPath'));
-        }, 500);
+        });
       }
       this.set('currentTransition', null);
     },
