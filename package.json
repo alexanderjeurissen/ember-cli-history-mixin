@@ -1,7 +1,7 @@
 {
   "name": "ember-cli-history-mixin",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "1.0.0",
+  "description": "A ember-cli mixin that provides history tracking and goBack() and goForward() actions",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -34,7 +34,13 @@
     "ember-try": "0.0.4"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ember-cli",
+    "history",
+    "goBack",
+    "goForward",
+    "history.back",
+    "history.forward"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.0.0"
