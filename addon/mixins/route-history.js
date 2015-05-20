@@ -12,7 +12,7 @@ export default Ember.Mixin.create({
 
     if (this.get('isSingleResource')) {
       var model = this.modelFor(this.get('currentPath'));
-      if (Ember.isPresent(model)) {
+      if (Ember.isPresent(model) && typeof model.get === "function") {
         transition.set('params', model.get('slug') || model.get('id'));
       }
     }
