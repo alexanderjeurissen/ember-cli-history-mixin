@@ -1,4 +1,5 @@
-# Ember-cli-history-mixin
+# Ember-cli-history-mixin [![Build Status](https://travis-ci.org/alexanderjeurissen/ember-cli-history-mixin.svg)](https://travis-ci.org/alexanderjeurissen/ember-cli-history-mixin)
+
 Ember-cli-history-mixin is a mixin that provides forward and backward actions
 to an Ember-CLI application which in turn either navigate one page back or one
 page forward.
