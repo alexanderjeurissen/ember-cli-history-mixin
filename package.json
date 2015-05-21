@@ -6,20 +6,24 @@
     "doc": "doc",
     "test": "tests"
   },
+  "author": "Alexander Jeurissen <alexanderjeurissen@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexanderjeurissen/ember-cli-history-mixin"
+  },
+  "homepage": "https://github.com/alexanderjeurissen/ember-cli-history-mixin",
   "scripts": {
     "start": "ember server",
     "build": "ember build",
-    "test": "ember try:testall"
+    "test": "ember test"
   },
-  "repository": "",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.2",
-    "ember-cli": "0.2.3",
+    "ember-cli": "0.2.5",
     "ember-cli-app-version": "0.3.3",
     "ember-cli-content-security-policy": "0.4.0",
     "ember-cli-dependency-checker": "0.0.8",
@@ -42,9 +46,7 @@
     "history.back",
     "history.forward"
   ],
-  "dependencies": {
-    "ember-cli-babel": "^5.0.0"
-  },
+  "dependencies": {},
   "ember-addon": {
     "configPath": "tests/dummy/config"
   }
