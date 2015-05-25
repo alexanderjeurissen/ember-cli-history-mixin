@@ -70,7 +70,7 @@ export default Ember.Mixin.create({
   },
 
   executeTransition: function (transition) {
-    if (transition.get('isSingleResource')) {
+    if (transition.get('isSingleResource') && transition.params !== null ) {
       this.get('controller').transitionToRoute(
         transition.targetRoute,
         transition.params
