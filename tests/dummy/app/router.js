@@ -11,5 +11,7 @@ export default Router.map(function () {
   this.resource('post', {
     path: '/post/:post_id'
   });
+  this.route('info');
+  this.route('about');
 });
 

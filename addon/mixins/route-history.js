@@ -21,8 +21,14 @@ export default Ember.Mixin.create({
   }),
   currentTransition: null,
 
-  isUntrackedRoute: Ember.computed.match('currentPath', /\w+.edit\b|\w+.new\b|loading\b/),
-  isSingleResource: Ember.computed.match('currentPath', /(?:^(?!.*s\b))(?:^(?!index)).*$/),
+  isUntrackedRoute: Ember.computed.match(
+    'currentPath',
+    /\w+.edit\b|\w+.new\b|loading\b/
+  ),
+  isSingleResource: Ember.computed.match(
+    'currentPath',
+    /(?:^(?!.*s\b))(?:^(?!index)).*$/
+  ),
   isTransitioning: false,
 
   observeRouteChanges: Ember.observer('currentPath', function () {
@@ -70,7 +76,7 @@ export default Ember.Mixin.create({
   },
 
   executeTransition: function (transition) {
-    if (transition.get('isSingleResource')) {
+    if (transition.get('isSingleResource') && transition.get('hasParams')) {
       this.get('controller').transitionToRoute(
         transition.targetRoute,
         transition.params
