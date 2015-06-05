@@ -27,7 +27,7 @@ describe('when directly navigating to a route, ', function () {
       visit('/');
 
       andThen(function () {
-        expect(currentPath()).to.equal('index');
+        expect(currentRouteName()).to.equal('index');
       });
     });
 
@@ -35,15 +35,15 @@ describe('when directly navigating to a route, ', function () {
       visit('/posts');
 
       andThen(function () {
-        expect(currentPath()).to.equal('posts');
+        expect(currentRouteName()).to.equal('posts');
       });
     });
 
     it('visit the post-route', function () {
-      visit('/post/1');
+      visit('/posts/1');
 
       andThen(function () {
-        expect(currentPath()).to.equal('post');
+        expect(currentRouteName()).to.equal('post.index');
       });
     });
 
@@ -53,16 +53,16 @@ describe('when directly navigating to a route, ', function () {
       click('button#goBackBtn');
 
       andThen(function () {
-        expect(currentPath()).to.equal('index');
+        expect(currentRouteName()).to.equal('index');
       });
     });
 
     it('goBack to index from post-route', function () {
-      visit('/post/1');
+      visit('/posts/1');
       click('button#goBackBtn');
       wait();
       andThen(function () {
-        expect(currentPath()).to.equal('index');
+        expect(currentRouteName()).to.equal('index');
       });
     });
   });
@@ -75,47 +75,48 @@ describe('When transitioning between routes, ', function () {
       click('a:contains("posts")');
     });
 
-    it('index => posts', function () {
+    it('from `index` to `posts`', function () {
       andThen(function () {
-        expect(currentPath()).to.equal('posts');
+        expect(currentRouteName()).to.equal('posts');
       });
     });
 
-    it('back from posts <- index', function () {
+    it('back from `posts` to `index`', function () {
       click('button:contains("Back")');
       andThen(function () {
-        expect(currentPath()).to.equal('index');
+        expect(currentRouteName()).to.equal('index');
       });
     });
 
-    it('from index -> posts', function () {
+    it('from `index` forward to `posts`', function () {
       click('button#goBackBtn');
       click('button#goForwardBtn');
       andThen(function () {
-        expect(currentPath()).to.equal('posts');
+        expect(currentRouteName()).to.equal('posts');
       });
     });
 
-    it('from index <-> posts', function () {
+    it('from `posts` back to `index`' +
+       'forward to `posts` and back to `index`', function () {
       click('button:contains("Back")');
       click('button:contains("Forward")');
       click('button:contains("Back")');
       andThen(function () {
-        expect(currentPath()).to.equal('index');
+        expect(currentRouteName()).to.equal('index');
       });
     });
 
-    it('from index <- posts <- post', function () {
+    it('from `post` back to `posts` back to `index`', function () {
       click('a:contains("First")');
       click('button#goBackBtn');
       click('button#goBackBtn');
       click('button#goBackBtn');
       andThen(function () {
-        expect(currentPath()).to.equal('index');
+        expect(currentRouteName()).to.equal('index');
       });
     });
 
-    it('from index -> posts -> post', function () {
+    it('from `index` forward to `posts` and forward to `post`', function () {
       click('a:contains("First")');
       click('button#goBackBtn');
       click('button#goBackBtn');
@@ -125,48 +126,51 @@ describe('When transitioning between routes, ', function () {
       click('button#goForwardBtn');
       click('button#goForwardBtn');
       andThen(function () {
-        expect(currentPath()).to.equal('post');
+        expect(currentRouteName()).to.equal('post.index');
         expect(find('#postContent').text()).to.contain('First Content');
       });
     });
   });
 });
 
-/* transition.params null issue (More context objects were passed than there are dynamic segments for the route) */
-
-describe('it can navigate between a few routes that have null params', function () {
+describe('it can navigate between routes that have null params', function () {
   it('visits the info route ', function () {
     visit('/');
     click('a:contains("Info")');
     andThen(function () {
-      expect(currentPath()).to.equal('info');
+      expect(currentRouteName()).to.equal('info');
     });
   });
+
   it('visits the info and then the about route', function () {
     visit('/');
     click('a:contains("Info")');
     click('a:contains("About")');
     andThen(function () {
-      expect(currentPath()).to.equal('about');
+      expect(currentRouteName()).to.equal('about');
     });
   });
-  it('visits the info and about route and then goes back to the info route', function () {
+
+  it('visits the info and about route '+
+     'and then goes back to the info route', function () {
     visit('/');
     click('a:contains("Info")');
     click('a:contains("About")');
     click('button#goBackBtn');
     andThen(function () {
-      expect(currentPath()).to.equal('info');
+      expect(currentRouteName()).to.equal('info');
     });
   });
-  it('visits the info and about route and then goes back to the info route', function () {
+
+  it('visits the info and about route '+
+     'and then goes back to the info route', function () {
     visit('/');
     click('a:contains("Info")');
     click('a:contains("About")');
     click('button#goBackBtn');
     click('button#goBackBtn');
     andThen(function () {
-      expect(currentPath()).to.equal('index');
+      expect(currentRouteName()).to.equal('index');
     });
   });
 });
