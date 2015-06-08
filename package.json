@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-history-mixin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A ember-cli mixin that provides history tracking and goBack() and goForward() actions",
   "directories": {
     "doc": "doc",
