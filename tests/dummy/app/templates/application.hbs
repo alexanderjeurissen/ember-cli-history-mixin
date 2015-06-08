@@ -1,6 +1,13 @@
 {{outlet}}
 <div>
   <hr>
-  <button id="goBackBtn" {{action "goBack"}}>Back</button>
-  <button id="goForwardBtn" {{action "goForward"}}>Forward</button>
+  <button id="goBackBtn" {{action "goBack"}}>
+    Back
+  </button>
+  <button id="goBackToParentBtn" {{action "goToParentRoute"}}>
+    back to parent
+  </button>
+  <button id="goForwardBtn" {{action "goForward"}}>
+    Forward
+  </button>
 </div>
